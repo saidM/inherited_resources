@@ -29,9 +29,6 @@ jobs:
       - name: Make sure gemfiles are up to date
         run: ruby -Itest -rbundler/setup -rgemfiles/lint -e 'exit(Minitest.run)'
 
-      - name: Make sure gemspec builds without warnings
-        run: ruby -Itest -rbundler/setup -rgemfiles/gemspec_lint -e 'exit(Minitest.run)'
-
       - name: Run linters
         run: bin/rubocop
 
