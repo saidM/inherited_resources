@@ -41,7 +41,7 @@ module InheritedResources
       # probably render a 500 error message.
       #
       def resource
-        a = self.resources_configuration[:self][:instance_name].capitalize.to_s.constantize
+        a = self.resources_configuration[:self][:instance_name].to_s.camelize.constantize
         # get_resource_ivar || set_resource_ivar(end_of_association_chain.send(method_for_find, params[:id]))
         get_resource_ivar || set_resource_ivar(a.send(method_for_find, params[:id]))
       end
