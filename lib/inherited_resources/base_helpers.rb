@@ -41,7 +41,9 @@ module InheritedResources
       # probably render a 500 error message.
       #
       def resource
-        get_resource_ivar || set_resource_ivar(end_of_association_chain.send(method_for_find, params[:id]))
+        a = self.resources_configuration[:self][:instance_name].capitalize.to_s.constantize
+        # get_resource_ivar || set_resource_ivar(end_of_association_chain.send(method_for_find, params[:id]))
+        get_resource_ivar || set_resource_ivar(a.send(method_for_find, params[:id]))
       end
 
       # This method is responsible for building the object on :new and :create
@@ -382,3 +384,4 @@ module InheritedResources
       end
   end
 end
+
